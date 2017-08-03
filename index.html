@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="robots" content="all">
+        <link rel="shortcut icon" href="img/veer.png" type="image/x-icon" />
+    <title>LeTTer van de Kapstok</title>
+    <!-- Bootstrap Core Stylesheets -->
+    <link rel="stylesheet" href="css/bootstrap.css"  type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"  type="text/css">
+	<link rel="stylesheet" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="color/default.css">
+         <!-- Bootstrap Core Javascript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<!-- Section: navigation bar on top -->
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+	<!-- Preloader -->
+	<div id="preloader">
+	  <div id="load"></div>
+	</div>
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#intro">Home</a></li>
+                <li><a href="#valvas">Ad ValvaS</a></li>
+                <li><a href="#stukken">Schrijfsels</a></li>
+        		<li><a href="#eline">Eline</a></li>
+              </ul>
+            </div>
+        </div>     
+    </nav>
+
+<!-- Section: intro -->
+<section id="intro" class="intro">	
+    <div class="slogan" id="slogan" style="text-align: center">    
+		<h2>LeTTer van de Kapstok</h2>
+		<h4>Schrijfsels</h4>
+		<h4>Dans & Theater</h4>
+	</div>
+	<div class="page-scroll">
+		<a href="#valvas" class="btn btn-circle">
+			<i class="fa fa-angle-double-down animated"></i>
+		</a>
+	</div>
+	<br>
+	<br>
+</section>
+<!-- /Section: intro -->
+
+<!-- Section: valvas -->
+<section id="valvas" class="home-section text-center">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 text-left col-lg-offset-2">
+    	     <div id="valvecontent"><table class="table" id="table1"></table></div>
+        </div> 
+</div>
+
+<script language="javascript">
+    $.getJSON("http://lettervandekapstok.be/valveverhaal.php", function(json){
+        
+        $.each(json, function(i, obj){
+            console.log(json);
+            console.log(json.genre);
+            
+            tr = $('<tr/>');
+            tr.append("<td><h1>" + obj.titel + "<h1></td>");
+            $('#table1').append(tr);
+            
+            tr = $('<tr/>');
+            tr.append("<td>" + obj.genre + "</td><br>");
+            $('#table1').append(tr);
+            
+            tr = $('<tr/>');
+            tr.append("<td></td>");
+            $('#table1').append(tr);
+            
+            tr = $('<tr/>');
+            tr.append("<p><td>" + obj.inleiding + "</td></p><br>");
+            $('#table1').append(tr);
+            
+            tr = $('<tr/>');
+            tr.append("<p><td>" + obj.raw + "</td></p>");
+            $('#table1').append(tr);
+        });
+    });
+</script>
+
+
+</section>
+
+	
+<!-- Section: stukken -->
+<section id="stukken" class="home-section text-center">
+    <div class="container">
+        <h4>¿Schrijfsels?</h4>
+        <div class="row">
+            <div class="col-xs-10 text-center">
+                    <div class="inner">
+                        <div class="container">
+            	            <div class="row">
+        		                <div class="col-xs-12">	
+            		               <div class="box">
+                                        <div class="box-header">
+                                            <h6 class="box-title text-left">Mijn Stukjes</h6>
+            			                </div>
+            			                <div class="box-header" style="width:100%;">
+            			                    <table class="table" id="verhaaltjes"></table>
+            			                </div>
+            		               </div>
+        	                    </div>
+                            </div>
+                        </div>
+                    </div>
+            </div> 
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-xs-10 text-center">
+                    <div class="inner">
+                        <div class="container">
+            	            <div class="row">
+        		                <div class="col-xs-12">	
+            		               <div class="box">
+                                        <div class="box-header">
+                                            <h6 class="box-title text-left">Best of Cobra</h6>
+            			                </div>
+            			                <div class="box-header" style="width:100%;">
+            			                    <table class="table" id="cobra"></table>
+            			                </div>
+            		               </div>
+        	                    </div>
+                            </div>
+                        </div>
+                    </div>
+            </div> 
+        </div>
+</section>
+
+
+<!-- Section: valvas -->
+<section id="eline" class="home-section text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-lg-offset-4 text-center">
+        		<div class="wow bounceInUp" data-wow-delay="0.1s">
+                    <div class="team boxed-grey">
+                        <div class="inner">
+                            <div class="text-center">
+                                <img src="img/eline.jpg" class="img-responsive" style="margin:0 auto;"/>
+                            </div>
+                        </div>		
+            		</div>
+                </div>
+            </div> 
+        </div>
+</section>
+
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-lg-12">
+				<div class="wow shake" data-wow-delay="0.4s">
+				<div class="page-scroll marginbot-30">
+					<a href="#intro" id="totop" class="btn btn-circle">
+						<i class="fa fa-angle-double-up animated"></i>
+					</a>
+				</div>
+				</div>
+				<p>&copy; LeTTer van de Kapstok</p>
+			</div>
+		</div>	
+	</div>
+</footer>
+
+<!-- Core JavaScript Files -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>	
+<script src="js/jquery.scrollTo.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/bootstrap-table.js"></script>
+<script src="js/custom.js"></script>
+<script>
+// Code to auto collapse navigation menu on mobile view //
+$('.navbar-collapse a').click(function(){
+    $(".navbar-collapse").collapse('hide');
+});
+</script>  
+
+<!-- Custom JavaScript Files -->
+<!-- script for dynamic routes --> 
+<script type="text/javascript" src="js/verhaaltjes.js"></script>
+<script type="text/javascript" src="js/valveverhaal.js"></script>
+<script type="text/javascript" src="js/cobra.js"></script>
+
+</body>
+</html>
