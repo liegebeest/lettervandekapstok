@@ -2,6 +2,7 @@
 
 require '../db.php';
 
+$id = $_POST["bewerkdropdown"];
 $titel = mysqli_real_escape_string($con, $_POST["titel"]);
 $genre = mysqli_real_escape_string($con, $_POST["genre"]);
 $inl =  mysqli_real_escape_string($con, $_POST["inl"]);
@@ -50,30 +51,11 @@ else
    $raw .= "||" . $p4; 
 }
 
-
-
-
-//I will save the email address and date and content of the message in a table
-$sqltran = mysqli_query($con, "INSERT INTO verhaaltjes (datum, titel, inleiding, raw, genre) VALUES(NOW()," ."'". $titel ."','". base64_encode($inl). "','". base64_encode($raw) . "','" . $genre ."')") or die(mysqli_error($con));
-
-
-$sqltran = mysqli_query($con, "SELECT id FROM verhaaltjes") or die(mysqli_error($con));
-$arrVal = array();
-$i=1;
-
-while ($rowList = mysqli_fetch_array($sqltran)) {
-    if($rowList['id'] > $i)
-    {
-        $i=$rowList['id'];
-    }
- }
-var_dump($i);
-
-
-$update_sql = "UPDATE verhaaltjes SET link='<input type=\"button\" class=\"btn btn-success btn-xs\" value=\"Laad Verhaal\" onclick=\"valveMe(".$i.")\">' WHERE id=". $i .";";
-var_dump($update_sql);
-$sqltran = mysqli_query($con, $update_sql) or die(mysqli_error($con));
+$sql = "UPDATE verhaaltjes SET titel='".$titel."', inleiding='".base64_encode($inl)."', raw='".base64_encode($raw)."', genre='".$genre."' WHERE id=".$id;
+var_dump($sql);
+$sqltran = mysqli_query($con, $sql);
 mysqli_close($con);
+
 ?>
 
 <html>
