@@ -39,7 +39,7 @@
                 <li class="active"><a href="#intro">Home</a></li>
                 <li><a href="#valvas">Ad ValvaS</a></li>
                 <li><a href="#stukken">Schrijfsels</a></li>
-        		<li><a href="#eline">Eline</a></li>
+        		<!--<li><a href="#eline">Eline</a></li> !-->
               </ul>
             </div>
         </div>     
@@ -47,40 +47,43 @@
 
 <!-- Section: intro -->
 <section id="intro" class="intro">	
-    <div class="slogan" id="slogan" style="text-align: center">    
+    <div class="slogan" id="slogan" style="text-align: center">
 		<h2>LeTTer van de Kapstok</h2>
 		<h4>Schrijfsels</h4>
 		<h4>Dans & Theater</h4>
+	    <div class="page-scroll">
+		    <a href="#valvas" class="btn btn-circle">
+			    <i class="fa fa-angle-double-down animated"></i>
+		    </a>
+	    </div>
 	</div>
-	<div class="page-scroll">
-		<a href="#valvas" class="btn btn-circle">
-			<i class="fa fa-angle-double-down animated"></i>
-		</a>
-	</div>
-	<br>
-	<br>
 </section>
 <!-- /Section: intro -->
 
 <!-- Section: valvas -->
 <section id="valvas" class="home-section text-center">
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 text-left col-lg-offset-2">
-    	     <div id="valvecontent"><table class="table" id="table1"></table></div>
-        </div> 
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 text-left col-lg-offset-2">
+        	     <div id="valvecontent"><table class="table" id="table1"></table></div>
+            </div> 
+    </div>
+</section>
 
 <script language="javascript">
-    $.getJSON("http://lettervandekapstok.be/valveverhaal.php", function(json){
-        
-        $.each(json, function(i, obj){
+
+function valveMe(id)
+{    
+    
+    $.getJSON("http://lettervandekapstok.be/valveverhaal.php?id=" + id, function(json){
+          $('#table1').empty();
+        $.each(json, function(i, obj)
+        {
             console.log(json);
             console.log(json.genre);
             
             tr = $('<tr/>');
-            tr.append("<td><h1>" + obj.titel + "<h1></td>");
+            tr.append("<td><h2>" + obj.titel + "<h2></td>");
             $('#table1').append(tr);
             
             tr = $('<tr/>');
@@ -92,7 +95,7 @@
             $('#table1').append(tr);
             
             tr = $('<tr/>');
-            tr.append("<p><td>" + obj.inleiding + "</td></p><br>");
+            tr.append("<p><td><b>" + obj.inleiding + "</b></td></p><br>");
             $('#table1').append(tr);
             
             tr = $('<tr/>');
@@ -100,10 +103,39 @@
             $('#table1').append(tr);
         });
     });
+    
+    window.location.hash = "#valvas";
+}
+
+$.getJSON("http://lettervandekapstok.be/valveverhaal.php", function(json){
+    $.each(json, function(i, obj)
+    {
+        console.log(json);
+        console.log(json.genre);
+        
+        tr = $('<tr/>');
+        tr.append("<td><h2>" + obj.titel + "<h2></td>");
+        $('#table1').append(tr);
+        
+        tr = $('<tr/>');
+        tr.append("<td>" + obj.genre + "</td><br>");
+        $('#table1').append(tr);
+        
+        tr = $('<tr/>');
+        tr.append("<td></td>");
+        $('#table1').append(tr);
+        
+        tr = $('<tr/>');
+        tr.append("<p><td><b>" + obj.inleiding + "</b></td></p><br>");
+        $('#table1').append(tr);
+        
+        tr = $('<tr/>');
+        tr.append("<p><td>" + obj.raw + "</td></p>");
+        $('#table1').append(tr);
+    });
+});
+
 </script>
-
-
-</section>
 
 	
 <!-- Section: stukken -->
@@ -156,11 +188,11 @@
 </section>
 
 
-<!-- Section: valvas -->
+<!--
 <section id="eline" class="home-section text-center">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-lg-offset-4 text-center">
+            <div class="col-md-4 col-lg-offset-2 text-center">
         		<div class="wow bounceInUp" data-wow-delay="0.1s">
                     <div class="team boxed-grey">
                         <div class="inner">
@@ -171,8 +203,24 @@
             		</div>
                 </div>
             </div> 
+            <div class="col-md-4 col-lg-offset-2 text-center">
+            	<div class="widget-contact">
+        			<h5>Info</h5>
+        			<address>
+        			  <strong>Stad</strong><br>
+        			  <abbr title="Stad"></abbr>Gent
+        			</address>
+        			<address>
+        			  <strong>E-mail</strong><br>
+        			  <a href="mailto:info@rondevanjoris.com">eline.vdvoorde@gmail.com</a>
+        			</address>
+                </div> 
+            </div> 
         </div>
 </section>
+
+!-->
+
 
 <footer>
 	<div class="container">
@@ -190,6 +238,8 @@
 		</div>	
 	</div>
 </footer>
+
+
 
 <!-- Core JavaScript Files -->
 <script src="js/jquery.min.js"></script>
